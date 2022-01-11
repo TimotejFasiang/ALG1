@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 /* 
- * 28. This program checks whether a matrix is orthonormal by testing vector magnitude and dot multiplication. 
+ * 28. This program checks whether a matrix is orthonormal by testing vector magnitude and dot multiplication 
  * @author Timotej Fašiang
- * @version 1.0, January 11 2022
+ * @version 1.1, January 11 2022
  */ 
 
 class SemestralniPrace {
@@ -28,15 +28,10 @@ class SemestralniPrace {
 class Uloha {
     private static Scanner sc = new Scanner(System.in);
     public static void uloha28() {
-        /*
-        ArrayList[][] table = new ArrayList[10][10];
-        table[0][0] = new ArrayList();
-        table[0][0].add();
-        */
-        while (true) {
+        while (true) { // Main loop
             System.out.println("Počet vektoru: ");
             int pocet = sc.nextInt();
-            if (pocet <= 0) { 
+            if (pocet <= 0) { // Condition to break from main loop
                 break;
             }
             Double[][] matrix = new Double[pocet][pocet];
@@ -55,19 +50,19 @@ class Uloha {
             //System.out.println(Arrays.deepToString(matrix).replace("], ", "]\n"));
         }
     }
-    public static boolean magnitudeTest(Double[][] matrix, int pocet) { // Checks whether the vectors from the matrix input is of magnitude(Delka vektoru) 1 
+    public static boolean magnitudeTest(Double[][] matrix, int pocet) { // Checks whether the vectors from the matrix input are of magnitude(Delka vektoru) 1 
         int False = 0;
         Double[] vector;
-        for (int i = 0; i < pocet; i++) {
+        for (int i = 0; i < pocet; i++) { 
             double magnitude = 0.0;
             vector = new Double[pocet];
-            for (int j = 0; j < pocet; j++) { //Creates vectors from the matrix input
+            for (int j = 0; j < pocet; j++) { // Creates vectors from the matrix input
                 vector[j] = matrix[i][j];
             }
-            for (int j = 0; j < vector.length; j++) { //Sum of all the elements squared
+            for (int j = 0; j < vector.length; j++) { // Sum of all the elements squared
                 magnitude += Math.pow(vector[j], 2);
             }
-            if (Math.sqrt(magnitude) != 1) {
+            if (Math.sqrt(magnitude) != 1) { // Final magnitude calculation 
                 False = 1;
             }
         }
@@ -122,7 +117,7 @@ class VanocniUloha {
             if (ran < 85 ) {
                 System.out.print(TEXT_GREEN + "*" + TEXT_RESET);
             }
-            else {
+            else { // Randomly selects color for the ornament
                 if (rando<1) {
                     System.out.print(TEXT_RED + ornament + TEXT_RESET);
                 }
@@ -138,13 +133,12 @@ class VanocniUloha {
     
     static void display_tree() {
         Scanner sc = new Scanner(System.in);
-        
         System.out.println("Výška vánočního stromku: ");
         int size = sc.nextInt(); 
         System.out.println("Typ ornamentu(znak): ");
         String ornament = sc.next();
         for (int r=1; r <= size; r++) { 
-            int s = 2*r-1; // Caluclates how much of the tree is visible on the printed line
+            int s = 2*r-1; // Calculates how much of the tree is visible on the printed line
             empty((2*size-2*r)/2); // Caluclates how much space before the tree should appear on the printed line
             full(s, ornament); 
         }
