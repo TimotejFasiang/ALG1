@@ -28,15 +28,15 @@ public class VanocniUloha {
 	static void full(int s, String ornament) {
 		for (int i=0; i<s; i++) {
 			double ran = Math.random()*100;
-			double rando = Math.random()*3;
+			double ornamentColor = Math.random()*3;
 			if (ran < 85 ) {
 				System.out.print(TEXT_GREEN + "*" + TEXT_RESET);
 			}
 			else {
-				if (rando<1) {
+				if (ornamentColor<1) {
 					System.out.print(TEXT_RED + ornament + TEXT_RESET);
 				}
-				else if (rando<2) {
+				else if (ornamentColor<2) {
 					System.out.print(TEXT_YELLOW + ornament + TEXT_RESET);
 				}
 				else {
@@ -56,9 +56,9 @@ public class VanocniUloha {
 		String ornament = sc.next();
 		
 		int rows = size;
-
+		int s;
 		for (int r=1; r <= size; r++) {
-			int s = 2*r-1;
+			s = 2*r-1;
 			empty((2*size-2*r)/2);
 			full(s, ornament); 
 		}

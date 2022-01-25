@@ -3,7 +3,7 @@ import java.util.Scanner;
 /* 
  * 28. This program checks whether a matrix is orthonormal by testing vector magnitude and dot multiplication 
  * @author Timotej Fašiang
- * @version 1.1, January 11 2022
+ * @version 1.2, January 25 2022
  */ 
 
 class SemestralniPrace {
@@ -51,28 +51,22 @@ class Uloha {
         }
     }
     public static boolean magnitudeTest(Double[][] matrix, int pocet) { // Checks whether the vectors from the matrix input are of magnitude(Delka vektoru) 1 
-        int False = 0;
-        Double[] vector;
         for (int i = 0; i < pocet; i++) { 
             double magnitude = 0.0;
-            vector = new Double[pocet];
-            for (int j = 0; j < pocet; j++) { // Creates vectors from the matrix input
-                vector[j] = matrix[i][j];
-            }
-            for (int j = 0; j < vector.length; j++) { // Sum of all the elements squared
-                magnitude += Math.pow(vector[j], 2);
+            for (int j = 0; j < matrix[i].length; j++) { // Sum of all the elements squared
+                magnitude += Math.pow(matrix[i][j], 2);
             }
             if (Math.sqrt(magnitude) != 1) { // Final magnitude calculation 
-                False = 1;
+                return false;
             }
         }
-        return (False != 1);
+        return true;
     }
     public static boolean dotProductTest(Double[][] matrix, int pocet) { // Checks whether the dot-product(Skalární součin) of all the vectors are equal to 0 
         Double sum = 0.0;
         Double[] vector1 = new Double[pocet];
         Double[] vector2 = new Double[pocet];
-        for (int i = 0; i < pocet; i++) { // Cycles through all the vectors in the matrix
+        for (int i = 0; i < pocet-1; i++) { // Cycles through all the vectors in the matrix
             for (int j = 0; j < pocet; j++) { // Creates vector1 from the matrix
                 vector1[j] = matrix[i][j];
             }
@@ -82,10 +76,13 @@ class Uloha {
                 }
                 for (int k = 0; k < pocet; k++) { // Does the actual vector dot/scalar multiplication
                     sum += vector1[k] * vector2[k];
+                    if (sum != 0) {
+                        return false;
+                    }
                 }
             }   
         }
-        return (sum == 0);
+        return true;
     }
 } // Uloha class close
 
